@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
                 <Pizza className="w-5 h-5 text-white" />
               </div>
               <span className="font-display text-lg font-bold text-gray-900 dark:text-white">
-                Pizzeria<span className="text-primary-500">Bella</span>
+                Crust<span className="text-primary-500">&Co</span>
               </span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xs">
@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>123 Pizza Street, Naples</li>
               <li>+1 (555) 123-4567</li>
-              <li>hello@pizzeriabella.com</li>
+              <li>hello@crustandco.com</li>
             </ul>
             <div className="flex items-center gap-3 mt-4">
               <a
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} PizzeriaBella. All rights reserved.
+            © {new Date().getFullYear()} Crust & Co. All rights reserved.
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
             Made with <Heart className="w-4 h-4 text-primary-500 fill-primary-500" /> and fresh

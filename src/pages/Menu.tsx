@@ -4,7 +4,7 @@ import { useAppSelector } from '../store/hooks';
 import { selectFilteredPizzas } from '../store/selectors';
 import { PizzaFilters, PizzaGrid } from '../components/pizza';
 import { PriceChart, OrderDistributionChart } from '../components/charts';
-import { OrderSummary, OrderHistory } from '../components/order';
+import { OrderSummary } from '../components/order';
 
 /**
  * Menu page with pizza grid, filters, and order sidebar
@@ -49,17 +49,14 @@ export const Menu: React.FC = () => {
               <PizzaGrid />
             </div>
 
-            {/* Sidebar - Order Summary only (sticky) */}
+            {/* Sidebar - Order Summary (sticky) */}
             <div className="xl:col-span-1">
               <div className="sticky top-24 space-y-6">
-                {/* Order Summary - Most important, always visible */}
+                {/* Order Summary - Quick cart reference */}
                 <OrderSummary />
 
-                {/* Order Distribution - only show when cart has items */}
+                {/* Order Distribution - shows current cart distribution */}
                 <OrderDistributionChart />
-
-                {/* Order History - compact */}
-                <OrderHistory />
               </div>
             </div>
           </div>

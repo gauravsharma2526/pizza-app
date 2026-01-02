@@ -72,15 +72,6 @@ export const PizzaGrid: React.FC<PizzaGridProps> = ({
     }, 300);
   }, [isLoading, itemsPerLoad, allPizzas.length]);
 
-  // Handle show all
-  const handleShowAll = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setVisibleCount(allPizzas.length);
-      setIsLoading(false);
-    }, 300);
-  };
-
   // Infinite scroll hook
   const { sentinelRef } = useInfiniteScroll({
     hasMore,
@@ -128,40 +119,24 @@ export const PizzaGrid: React.FC<PizzaGridProps> = ({
             Showing {visibleCount} of {allPizzas.length} pizzas
           </p>
 
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              onClick={handleLoadMore}
-              disabled={isLoading}
-              className="min-w-[160px]"
-            >
-              {isLoading ? (
-                <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
-                  Loading...
-                </>
-              ) : (
-                <>
-                  <ChevronDown className="w-4 h-4" />
-                  Load More ({Math.min(itemsPerLoad, remainingCount)})
-                </>
-              )}
-            </Button>
-
-            {remainingCount > itemsPerLoad && (
-              <Button variant="ghost" onClick={handleShowAll} disabled={isLoading}>
-                Show All ({allPizzas.length})
-              </Button>
+          <Button
+            variant="outline"
+            onClick={handleLoadMore}
+            disabled={isLoading}
+            className="min-w-[160px]"
+          >
+            {isLoading ? (
+              <>
+                <RefreshCw className="w-4 h-4 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-4 h-4" />
+                Load More ({Math.min(itemsPerLoad, remainingCount)})
+              </>
             )}
-          </div>
-
-          {/* Progress indicator */}
-          <div className="w-48 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-primary-500 rounded-full transition-all duration-300"
-              style={{ width: `${(visibleCount / allPizzas.length) * 100}%` }}
-            />
-          </div>
+          </Button>
         </div>
       )}
 

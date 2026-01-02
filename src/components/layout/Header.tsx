@@ -47,12 +47,12 @@ export const Header: React.FC = () => {
               <span className="hidden sm:inline">🎉 Special Offer: </span>
               Order 3+ of same pizza, get <span className="font-bold">10% OFF!</span>
             </span>
-            <a
-              href="#menu"
+            <Link
+              to="/menu"
               className="hidden sm:inline-flex items-center gap-1 ml-2 font-semibold hover:underline"
             >
               Order Now <ChevronRight className="w-4 h-4" />
-            </a>
+            </Link>
             <button
               onClick={() => setShowPromoBanner(false)}
               className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors"

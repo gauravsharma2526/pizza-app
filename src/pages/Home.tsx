@@ -282,7 +282,9 @@ export const Home: React.FC = () => {
                   <h3 className="font-display text-lg font-bold text-gray-900 dark:text-white">
                     {category.name}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{category.count} options</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {category.count} options
+                  </p>
                 </div>
               </Link>
             ))}
