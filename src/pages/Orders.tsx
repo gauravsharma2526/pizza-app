@@ -1,16 +1,16 @@
 import React from 'react';
-import { ArrowLeft, Package, Clock, CheckCircle, ChefHat, Truck, ShoppingBag } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Package, Clock, CheckCircle, ChefHat, Truck, ShoppingBag, Receipt, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../store/hooks';
 import { selectAllOrders } from '../store/selectors';
 import { Card, Button } from '../components/ui';
+import { HeroSection } from '../components/layout';
 import type { Order } from '../types';
 
 /**
  * Orders page showing complete order history
  */
 export const Orders: React.FC = () => {
-  const navigate = useNavigate();
   const orders = useAppSelector(selectAllOrders);
 
   const getStatusIcon = (status: Order['status']) => {
@@ -63,33 +63,24 @@ export const Orders: React.FC = () => {
   const totalSpent = orders.reduce((sum, order) => sum + order.total, 0);
   const totalSaved = orders.reduce((sum, order) => sum + order.totalDiscount, 0);
 
-  return (
-    <div className="page-container">
-      {/* Back button */}
-      <button
-        onClick={() => navigate('/')}
-        className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors mb-6"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        Back to Menu
-      </button>
+  const heroBadges = [
+    { icon: <Receipt className="w-4 h-4" />, text: `${orders.length} Orders Placed` },
+    { icon: <TrendingUp className="w-4 h-4" />, text: `$${totalSpent.toFixed(2)} Total Spent` },
+  ];
 
-      {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-4 mb-2">
-          <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-2xl">
-            <Package className="w-8 h-8 text-primary-600 dark:text-primary-400" />
-          </div>
-          <div>
-            <h1 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-              Order History
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              View all your past orders and their details
-            </p>
-          </div>
-        </div>
-      </div>
+  return (
+    <div className="min-h-screen">
+      <HeroSection
+        theme="secondary"
+        subtitle="Your Orders"
+        title="Order History"
+        description="Track your pizza journey and revisit all your delicious orders. Every slice tells a story!"
+        badges={heroBadges}
+        backTo="/"
+        backLabel="Back to Menu"
+      />
+
+      <div className="page-container py-8">
 
       {orders.length === 0 ? (
         <Card className="text-center py-16">
@@ -223,6 +214,7 @@ export const Orders: React.FC = () => {
           </div>
         </>
       )}
+      </div>
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React from 'react';
-import { UtensilsCrossed, BarChart3 } from 'lucide-react';
+import { UtensilsCrossed, BarChart3, Sparkles } from 'lucide-react';
 import { useAppSelector } from '../store/hooks';
 import { selectFilteredPizzas } from '../store/selectors';
 import { PizzaFilters, PizzaGrid } from '../components/pizza';
 import { PriceChart, OrderDistributionChart } from '../components/charts';
 import { OrderSummary } from '../components/order';
+import { HeroSection } from '../components/layout';
 
 /**
  * Menu page with pizza grid, filters, and order sidebar
@@ -12,18 +13,22 @@ import { OrderSummary } from '../components/order';
 export const Menu: React.FC = () => {
   const filteredPizzas = useAppSelector(selectFilteredPizzas);
 
+  const heroBadges = [
+    { icon: <Sparkles className="w-4 h-4" />, text: `${filteredPizzas.length} Pizzas Available` },
+    { icon: <UtensilsCrossed className="w-4 h-4" />, text: 'Fresh Daily' },
+  ];
+
   return (
     <div className="min-h-screen">
+      <HeroSection
+        theme="primary"
+        subtitle="Explore Our Menu"
+        title="Our Pizza Collection"
+        description="From classic favorites to innovative creations, discover handcrafted pizzas made with the freshest ingredients and authentic Italian recipes"
+        badges={heroBadges}
+      />
+
       <div className="page-container py-8">
-        {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            Our Menu
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Explore our handcrafted pizzas made with the freshest ingredients
-          </p>
-        </div>
 
         {/* Filters */}
         <section className="mb-8">

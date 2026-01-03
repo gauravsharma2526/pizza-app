@@ -72,7 +72,8 @@ export const PriceChart: React.FC = () => {
 
   // Custom tooltip render function (not a component)
   const renderTooltip = useCallback(
-    (props: TooltipProps<number, string>) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (props: TooltipProps<number, string> & { payload?: readonly any[] }) => {
       const { active, payload } = props;
       if (!active || !payload || !payload.length) return null;
 
