@@ -29,7 +29,6 @@ export const Menu: React.FC = () => {
       />
 
       <div className="page-container py-8">
-
         {/* Filters */}
         <section className="mb-8">
           <PizzaFilters />

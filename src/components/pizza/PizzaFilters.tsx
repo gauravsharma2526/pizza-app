@@ -1,16 +1,16 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
-import { 
-  Search, 
-  X, 
-  Leaf, 
-  Flame, 
-  DollarSign, 
+import {
+  Search,
+  X,
+  Leaf,
+  Flame,
+  DollarSign,
   ChefHat,
   SlidersHorizontal,
   ArrowUpDown,
   TrendingDown,
-  Tag
+  Tag,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
@@ -82,17 +82,17 @@ export const PizzaFilters: React.FC = () => {
   const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     // Mark as typing to prevent sync from overwriting
     isTypingRef.current = true;
-    
+
     // Clear existing timeout
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
     }
-    
+
     // Set timeout to mark as not typing after debounce completes
     typingTimeoutRef.current = setTimeout(() => {
       isTypingRef.current = false;
     }, 400); // Slightly longer than debounce delay
-    
+
     setLocalSearch(e.target.value);
   }, []);
 
@@ -211,8 +211,20 @@ export const PizzaFilters: React.FC = () => {
 
   // Quick filter configuration with active state
   const quickFilters = [
-    { label: 'Budget', icon: TrendingDown, action: handleBudgetFriendly, isActive: isBudgetFriendlyActive, color: 'emerald' },
-    { label: 'Under $20', icon: Tag, action: handleUnder20, isActive: isUnder20Active, color: 'blue' },
+    {
+      label: 'Budget',
+      icon: TrendingDown,
+      action: handleBudgetFriendly,
+      isActive: isBudgetFriendlyActive,
+      color: 'emerald',
+    },
+    {
+      label: 'Under $20',
+      icon: Tag,
+      action: handleUnder20,
+      isActive: isUnder20Active,
+      color: 'blue',
+    },
     { label: 'Veggie', icon: Leaf, action: handleVeggie, isActive: isVeggieActive, color: 'green' },
   ];
 
@@ -222,7 +234,7 @@ export const PizzaFilters: React.FC = () => {
       <div className="relative overflow-hidden bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
         {/* Decorative gradient */}
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500" />
-        
+
         <div className="p-5 md:p-6">
           {/* Search Row */}
           <div className="flex flex-col lg:flex-row gap-4">
@@ -269,7 +281,8 @@ export const PizzaFilters: React.FC = () => {
               {quickFilters.map((qf, idx) => {
                 const activeStyles: Record<string, string> = {
                   amber: 'bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/25',
-                  emerald: 'bg-emerald-500 text-white border-emerald-500 shadow-md shadow-emerald-500/25',
+                  emerald:
+                    'bg-emerald-500 text-white border-emerald-500 shadow-md shadow-emerald-500/25',
                   blue: 'bg-blue-500 text-white border-blue-500 shadow-md shadow-blue-500/25',
                   green: 'bg-green-500 text-white border-green-500 shadow-md shadow-green-500/25',
                 };
@@ -349,7 +362,9 @@ export const PizzaFilters: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             {/* Vegetarian toggle */}
             <button
-              onClick={() => dispatch(setVegetarianFilter(filters.isVegetarian === true ? null : true))}
+              onClick={() =>
+                dispatch(setVegetarianFilter(filters.isVegetarian === true ? null : true))
+              }
               className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
                 filters.isVegetarian === true
                   ? 'bg-accent-100 dark:bg-accent-900/30 border-accent-500 text-accent-700 dark:text-accent-300'
@@ -378,7 +393,9 @@ export const PizzaFilters: React.FC = () => {
 
             {/* Price filter */}
             <div className="flex items-center gap-2">
-              <DollarSign className={`w-4 h-4 ${filters.maxPrice ? 'text-secondary-600' : 'text-gray-400'}`} />
+              <DollarSign
+                className={`w-4 h-4 ${filters.maxPrice ? 'text-secondary-600' : 'text-gray-400'}`}
+              />
               <select
                 value={filters.maxPrice?.toString() || ''}
                 onChange={(e) =>
@@ -400,7 +417,9 @@ export const PizzaFilters: React.FC = () => {
 
             {/* Ingredient filter */}
             <div className="flex items-center gap-2">
-              <ChefHat className={`w-4 h-4 ${filters.ingredient ? 'text-primary-600' : 'text-gray-400'}`} />
+              <ChefHat
+                className={`w-4 h-4 ${filters.ingredient ? 'text-primary-600' : 'text-gray-400'}`}
+              />
               <select
                 value={filters.ingredient}
                 onChange={(e) => dispatch(setIngredientFilter(e.target.value))}
@@ -428,8 +447,8 @@ export const PizzaFilters: React.FC = () => {
                 </span>
                 {filters.search && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
-                    <Search className="w-2.5 h-2.5" />
-                    "{filters.search.slice(0, 15)}{filters.search.length > 15 ? '...' : ''}"
+                    <Search className="w-2.5 h-2.5" />"{filters.search.slice(0, 15)}
+                    {filters.search.length > 15 ? '...' : ''}"
                     <button onClick={handleClearSearch} className="hover:text-red-500">
                       <X className="w-2.5 h-2.5" />
                     </button>
@@ -437,8 +456,12 @@ export const PizzaFilters: React.FC = () => {
                 )}
                 {filters.category !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
-                    {categoryOptions.find(c => c.value === filters.category)?.icon} {filters.category}
-                    <button onClick={() => dispatch(setCategoryFilter('all'))} className="hover:text-red-500">
+                    {categoryOptions.find((c) => c.value === filters.category)?.icon}{' '}
+                    {filters.category}
+                    <button
+                      onClick={() => dispatch(setCategoryFilter('all'))}
+                      className="hover:text-red-500"
+                    >
                       <X className="w-2.5 h-2.5" />
                     </button>
                   </span>
@@ -446,7 +469,10 @@ export const PizzaFilters: React.FC = () => {
                 {filters.isVegetarian && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400">
                     <Leaf className="w-2.5 h-2.5" /> Vegetarian
-                    <button onClick={() => dispatch(setVegetarianFilter(null))} className="hover:text-red-500">
+                    <button
+                      onClick={() => dispatch(setVegetarianFilter(null))}
+                      className="hover:text-red-500"
+                    >
                       <X className="w-2.5 h-2.5" />
                     </button>
                   </span>
@@ -454,7 +480,10 @@ export const PizzaFilters: React.FC = () => {
                 {filters.isSpicy && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
                     <Flame className="w-2.5 h-2.5" /> Spicy
-                    <button onClick={() => dispatch(setSpicyFilter(null))} className="hover:text-red-500">
+                    <button
+                      onClick={() => dispatch(setSpicyFilter(null))}
+                      className="hover:text-red-500"
+                    >
                       <X className="w-2.5 h-2.5" />
                     </button>
                   </span>
@@ -462,7 +491,10 @@ export const PizzaFilters: React.FC = () => {
                 {filters.maxPrice && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-secondary-100 dark:bg-secondary-900/30 text-secondary-600 dark:text-secondary-400">
                     <DollarSign className="w-2.5 h-2.5" /> Under ${filters.maxPrice}
-                    <button onClick={() => dispatch(setMaxPriceFilter(null))} className="hover:text-red-500">
+                    <button
+                      onClick={() => dispatch(setMaxPriceFilter(null))}
+                      className="hover:text-red-500"
+                    >
                       <X className="w-2.5 h-2.5" />
                     </button>
                   </span>
@@ -470,7 +502,10 @@ export const PizzaFilters: React.FC = () => {
                 {filters.ingredient && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                     <ChefHat className="w-2.5 h-2.5" /> {filters.ingredient}
-                    <button onClick={() => dispatch(setIngredientFilter(''))} className="hover:text-red-500">
+                    <button
+                      onClick={() => dispatch(setIngredientFilter(''))}
+                      className="hover:text-red-500"
+                    >
                       <X className="w-2.5 h-2.5" />
                     </button>
                   </span>
