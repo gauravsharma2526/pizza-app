@@ -6,7 +6,7 @@ import { store, persistor } from './store';
 import { useAppSelector } from './store/hooks';
 import { selectTheme } from './store/selectors';
 import { Layout } from './components/layout';
-import { Home, Menu, PizzaDetails, AddPizza, Orders, Cart } from './pages';
+import { Home, Menu, PizzaDetails, AddPizza, Orders, Cart, NotFound } from './pages';
 
 /**
  * Theme wrapper component to handle dark mode
@@ -40,6 +40,8 @@ const AppRoutes: React.FC = () => {
         <Route path="orders" element={<Orders />} />
         <Route path="cart" element={<Cart />} />
       </Route>
+      {/* 404 catch-all route */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

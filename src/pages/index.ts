@@ -4,3 +4,4 @@ export { PizzaDetails } from './PizzaDetails';
 export { AddPizza } from './AddPizza';
 export { Orders } from './Orders';
 export { Cart } from './Cart';
+export { NotFound } from './NotFound';
