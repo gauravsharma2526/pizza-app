@@ -45,6 +45,8 @@ export const PizzaFilters: React.FC = () => {
   // Track if user is currently typing (to prevent sync from overwriting)
   const isTypingRef = useRef(false);
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Track if we're intentionally clearing (to prevent debounced value from re-dispatching)
+  const isClearingRef = useRef(false);
 
   // Local state for search input (for immediate UI feedback)
   const [localSearch, setLocalSearch] = useState(filters.search);
@@ -55,6 +57,14 @@ export const PizzaFilters: React.FC = () => {
 
   // Update Redux store when debounced value changes
   useEffect(() => {
+    // Skip if we're intentionally clearing - don't re-dispatch stale debounced value
+    if (isClearingRef.current) {
+      // Reset the clearing flag once the debounced value has caught up
+      if (debouncedSearch === '') {
+        isClearingRef.current = false;
+      }
+      return;
+    }
     if (debouncedSearch !== filters.search) {
       dispatch(setSearchFilter(debouncedSearch));
     }
@@ -94,6 +104,8 @@ export const PizzaFilters: React.FC = () => {
       clearTimeout(typingTimeoutRef.current);
       typingTimeoutRef.current = null;
     }
+    // Mark as clearing to prevent debounced value from re-dispatching
+    isClearingRef.current = true;
     // Clear both local and redux state
     setLocalSearch('');
     dispatch(setSearchFilter(''));
@@ -107,6 +119,8 @@ export const PizzaFilters: React.FC = () => {
       clearTimeout(typingTimeoutRef.current);
       typingTimeoutRef.current = null;
     }
+    // Mark as clearing to prevent debounced value from re-dispatching
+    isClearingRef.current = true;
     // Immediately clear local search state first
     setLocalSearch('');
     // Then reset all filters
