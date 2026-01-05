@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Mitchell",
+    "role": "Food Blogger",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    "rating": 5,
+    "review": "Absolutely the best pizza I've had! The crust is perfectly crispy, and the toppings are always fresh. Crust & Co has become my go-to for pizza nights.",
+    "date": "2 weeks ago",
+    "highlight": "Best pizza in town!"
+  },
+  {
+    "id": 2,
+    "name": "Michael Chen",
+    "role": "Regular Customer",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    "rating": 5,
+    "review": "The bulk discount is amazing - I always order 3+ pizzas for family dinners. Fast delivery, hot pizza, and incredible flavor. What more could you ask for?",
+    "date": "1 week ago",
+    "highlight": "Amazing value!"
+  },
+  {
+    "id": 3,
+    "name": "Emily Rodriguez",
+    "role": "Pizza Enthusiast",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    "rating": 5,
+    "review": "As a vegetarian, I'm always impressed by their variety. The Veggie Supreme is loaded with fresh veggies and the cheese is top quality. Highly recommend!",
+    "date": "3 days ago",
+    "highlight": "Great for vegetarians!"
+  },
+  {
+    "id": 4,
+    "name": "David Thompson",
+    "role": "Office Manager",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    "rating": 5,
+    "review": "We order from Crust & Co for every office party. The pizzas are always a hit, and the ordering process is so easy. Professional and delicious!",
+    "date": "5 days ago",
+    "highlight": "Perfect for events!"
+  },
+  {
+    "id": 5,
+    "name": "Lisa Wang",
+    "role": "Home Chef",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
+    "rating": 5,
+    "review": "The wood-fired taste is authentic - you can tell they use real Italian techniques. The Margherita is simple perfection. My family loves it!",
+    "date": "1 month ago",
+    "highlight": "Authentic Italian taste!"
+  },
+  {
+    "id": 6,
+    "name": "James Wilson",
+    "role": "Spicy Food Lover",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    "rating": 5,
+    "review": "Finally, a pizza place that does spicy right! Their Diavola has the perfect kick without overwhelming the other flavors. Fire in every bite!",
+    "date": "4 days ago",
+    "highlight": "Spicy perfection!"
+  }
+]

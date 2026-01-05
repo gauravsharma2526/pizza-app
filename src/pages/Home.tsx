@@ -23,6 +23,7 @@ import { addToCart } from '../store/slices/cartSlice';
 import { addNotification } from '../store/slices/uiSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { FALLBACK_IMAGE } from '../constants';
+import { CustomerReviews } from '../components/ui';
 
 /**
  * Home/Landing page with hero banner, featured sections, and CTAs
@@ -494,6 +495,9 @@ export const Home: React.FC = () => {
             </div>
           </section>
         )}
+
+        {/* Customer Reviews Section */}
+        <CustomerReviews />
 
         {/* Final CTA Section */}
         <section className="py-16">

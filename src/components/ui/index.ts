@@ -9,3 +9,4 @@ export { Skeleton, PizzaCardSkeleton, PizzaGridSkeleton, CartItemSkeleton } from
 export { FloatingCartButton } from './FloatingCartButton';
 export { OrderSuccessModal } from './OrderSuccessModal';
 export { SearchAutocomplete } from './SearchAutocomplete';
+export { CustomerReviews } from './CustomerReviews';
